@@ -50,4 +50,5 @@ FROM zepto
 ORDER BY Category;
 
 -- Products in stock vs out of stock
-SELECT 
+SELECT COUNT(*) FROM zepto
+WHERE outOfStock = 'TRUE';
