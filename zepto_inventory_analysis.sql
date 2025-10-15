@@ -141,32 +141,32 @@ Data Analysis
 -- Q19. Find the correlation between discount percentage and stock availability.
 
 
--- Q1. Find the top 10 best-value products based on the discount percentage.
+-- Q1. Find the top 10 best-value products based on the discount percentage
 SELECT DISTINCT name, mrp, discountPercent
 FROM zepto_clean
 ORDER BY discountPercent DESC
 LIMIT 10;
 
--- Q2.What are the Products with High MRP but Out of Stock
+-- Q2. What are the Products with High MRP but Out of Stock
 SELECT DISTINCT name, mrp
 FROM zepto_clean
 WHERE outOfStock = 1 and mrp > 250
 ORDER BY mrp DESC;
 
--- Q3.Calculate Estimated Revenue for each category
+-- Q3. Calculate Estimated Revenue for each category
 SELECT Category, SUM(discountedSellingPrice * availableQuantity) AS total_revenue
 FROM zepto_clean
 GROUP BY Category
 ORDER BY total_revenue DESC;
 
--- Q4. Find the top 5 categories generating the most estimated revenue.
+-- Q4. Find the top 5 categories generating the most estimated revenue
 SELECT Category, SUM(discountedSellingPrice * availableQuantity) AS total_revenue
 FROM zepto_clean
 GROUP BY Category
 ORDER BY total_revenue DESC
 LIMIT 5;
 
--- Q5.What is the Total Inventory Weight Per Category 
+-- Q5. What is the Total Inventory Weight Per Category 
 SELECT Category, SUM(weightInGms * availableQuantity) AS total_weight
 FROM zepto_clean
 GROUP BY Category
@@ -199,26 +199,26 @@ SELECT
 FROM zepto_clean
 ORDER BY Category, Percentage_Contribution DESC;
 
--- Q9. Find all products where MRP is greater than ₹500 and discount is less than 10%.
+-- Q9. Find all products where MRP is greater than ₹500 and discount is less than 10%
 SELECT DISTINCT name, mrp, discountPercent
 FROM zepto_clean
 WHERE mrp > 500 AND discountPercent < 10
 ORDER BY mrp DESC, discountPercent DESC;
 
--- Q10. Identify the top 5 categories offering the highest average discount percentage.
+-- Q10. Identify the top 5 categories offering the highest average discount percentage
 SELECT Category, ROUND(AVG(discountPercent),2) AS avg_discount_percent
 FROM zepto_clean
 GROUP BY Category
 ORDER BY avg_discount_percent DESC
 LIMIT 5;
 
--- Q11. Find the price per gram for products above 100g and sort by best value.
+-- Q11. Find the price per gram for products above 100g and sort by best value
 SELECT DISTINCT name, weightInGms, discountedSellingPrice, ROUND(discountedSellingPrice/weightInGms, 2) AS price_per_gm
 FROM zepto_clean
 WHERE weightInGms >= 100
 ORDER BY price_per_gm;
 
--- Q12. Group the products into categories like Low, Medium, Bulk.
+-- Q12. Group the products into categories like Low, Medium, Bulk
 SELECT DISTINCT name, weightInGms,
 	CASE 
 		WHEN weightInGms <= 1000 THEN 'Low'
@@ -233,26 +233,26 @@ FROM zepto_clean
 GROUP BY Category
 ORDER BY unique_products DESC;
 
--- Q14. Find categories with the highest average MRP per product.
+-- Q14. Find categories with the highest average MRP per product
 SELECT Category, ROUND(AVG(mrp), 2) AS avg_mrp
 FROM zepto_clean
 GROUP BY Category
 ORDER BY avg_mrp DESC;
 
--- Q15. Identify products with the highest markup (difference between MRP and discountedSellingPrice).
+-- Q15. Identify products with the highest markup (difference between MRP and discountedSellingPrice)
 SELECT name, Category, mrp, discountedSellingPrice, (mrp - discountedSellingPrice) AS markup
 FROM zepto_clean
 ORDER BY markup DESC
 LIMIT 10;
 
--- Q16. Find the total number of out-of-stock products per category.
+-- Q16. Find the total number of out-of-stock products per category
 SELECT Category, COUNT(*) AS out_of_stock_count
 FROM zepto_clean
 WHERE outOfStock = '1'
 GROUP BY Category
 ORDER BY out_of_stock_count DESC;
 
--- Q17. Identify products with high discount but low stock (potential sell-out risk).
+-- Q17. Identify products with high discount but low stock (potential sell-out risk)
 SELECT name, Category, discountPercent, availableQuantity
 FROM zepto_clean
 WHERE discountPercent > 40 AND availableQuantity < 7
@@ -264,7 +264,7 @@ FROM zepto_clean
 WHERE discountPercent = 0 AND outOfStock = 0
 ORDER BY discountedSellingPrice DESC;
 
--- Q19. Find the correlation between discount percentage and stock availability.
+-- Q19. Find the correlation between discount percentage and stock availability
 SELECT 
     CASE 
         WHEN discountPercent < 10 THEN 'Low Discount'
