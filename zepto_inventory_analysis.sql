@@ -266,7 +266,7 @@ ORDER BY discountPercent DESC;
 -- Q18. Find products with zero discount but still out of stock (high demand items)
 SELECT name, Category, mrp, discountedSellingPrice
 FROM zepto_clean
-WHERE discountPercent = 0 AND outOfStock = 0
+WHERE discountPercent = 0 AND outOfStock = 1
 ORDER BY discountedSellingPrice DESC;
 
 -- Q19. Find the correlation between discount percentage and stock availability
