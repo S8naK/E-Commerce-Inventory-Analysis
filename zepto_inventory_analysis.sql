@@ -1,3 +1,9 @@
+/*
+===============================================================================
+SQL SCRIPTS
+===============================================================================
+*/
+
 DROP TABLE IF EXISTS zepto;
 
 -- Loaded Data using Table Data Import Wizard
@@ -131,7 +137,6 @@ Data Analysis
 -- Q10. Identify the top 5 categories offering the highest average discount percentage.
 -- Q11. Find the price per gram for products above 100g and sort by best value.
 -- Q12.Group the products into categories like Low, Medium, Bulk.
-
 -- Q13. Which categories have the highest number of unique products?
 -- Q14. Find categories with the highest average MRP per product.
 -- Q15. Identify products with the highest markup (difference between MRP and discountedSellingPrice).
