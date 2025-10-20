@@ -1,4 +1,4 @@
-# E-Commerce Inventory Analysis
+# E-Commerce Zepto Inventory Analysis
 ## Overview
 Analyzed inventory data from Zepto using MySQL. Performed EDA, cleaned data, and answered key business questions and uncovered insights about inventory efficiency, pricing strategy, and potential sell-out risks.
 
